@@ -1,0 +1,16 @@
+<!-- ユーザー情報詳細 -->
+<div class="col-xs-3">
+  <table class="table table-striped">
+    <h2>User info</h2>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback:"no_image.jpg" %>
+    <tr>
+      <th>name</th>
+      <td><%= @user.username %></td>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <td><%= @user.introduction %></td>
+    </tr>
+
+
+  <%=link_to '編集', edit_user_path(@user.id) %>

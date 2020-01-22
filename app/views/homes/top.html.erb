@@ -1,0 +1,8 @@
+<h1>みんなの投稿一覧</h1>
+		 <div class="flex_test-box">
+			   <% @lists.each do |list| %>
+				      <%=link_to list_path(list) do %>
+				  	  <%= attachment_image_tag list, :image, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size: '200x200'  %>
+				  	  <% end %>
+			   <% end %>
+	</div>
