@@ -12,7 +12,7 @@
    <div class="container">
         <nav>
          <ul class="left nav navbar-nav navbar-left">
-          <%= link_to top_path do %>
+          <%= link_to root_path do %>
           <%= image_tag "Postdrive-logo.png", :size =>'150x70' %>
           <% end %>
          </ul>
@@ -24,7 +24,7 @@
                <%= link_to current_user.username %>
               </li>
               <li class="">
-                <%= link_to ' TOP画面', top_path, :class => "glyphicon glyphicon-home" %>
+                <%= link_to ' TOP画面', root_path, :class => "glyphicon glyphicon-home" %>
               </li>
               <li class="">
                 <%= link_to ' 投稿一覧', lists_path, :class => "glyphicon glyphicon-user" %>
@@ -40,7 +40,7 @@
               </li>
             <% else %>
              <li class="">
-                <%= link_to ' TOP画面',top_path, :class => "glyphicon glyphicon-home" %>
+                <%= link_to ' TOP画面',root_path, :class => "glyphicon glyphicon-home" %>
               </li>
               <li class="">
                 <%= link_to ' About',about_path, :class => "glyphicon glyphicon-link"%>

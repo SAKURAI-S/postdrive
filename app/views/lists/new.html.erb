@@ -1,22 +1,17 @@
 <!-- 新規投稿 -->
-<h1>新規投稿</h1>
-<!-- form_for部分 -->
-<%= form_for(@list) do |f| %>
-
-    <h4>タイトル</h4>
-    <%= f.text_field :title %>
-
-    <h4>本文</h4>
-    <%= f.text_area :body %>
-
-     <h4>画像</h4>
-  <%= f.attachment_field :image %>
-
-    <%= f.submit '投稿' %>
-
-<% end %>
-
 <html>
+<h2>New book</h2>
+    <%= form_for (@list) do |f| %>
+        <h4>Title</h4>
+        <%= f.text_field :title, class: "title_field" %>
+
+        <h4>Opinion</h4>
+        <%= f.text_area :body, class: "body_field"  %>
+
+        <%= f.submit 'Create List',class: "btn btn-primary col-xs-12" %>
+    <% end %>
+</html>
+
      <head>
      <meta charset="utf-8"/>
      <script type="text/javascript">
@@ -62,7 +57,7 @@
                map.setCenter(YourPosition);
                var win_options = {
                     content: '<b>現在位置</b><br />緯度：' + YourPosition.lat() + '<br />経度：' + YourPosition.lng() + '<br />高度：' + String(alt)
-                                          + '<br />緯度、経度の精度：' + accuracy 
+                                          + '<br />緯度、経度の精度：' + accuracy
                                           + '<br />高度の精度：' + accuracyAlt
                                           + '<br />方角：' + heading
                                           + '<br />速度：' + speed
@@ -102,12 +97,12 @@
 </head>
 <body>
      <div style="height:400px;100%"id="map_canvas"></div>
-     <script src="https://maps.googleapis.com/maps/api/js?key=(APIキー)&callback=initMap" async="" defer=""></script>
+   
      <br /><button class'btn btn-primary' type='button' onclick='getCurrentPosition();'>現在位置取得</button>
      <input type="checkbox" id="chxHighAccuracy" /><label for='chxHighAccuracy'> 高精度に位置を取得する </label>
 </body>
-</html>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?laguage=ja&region=JP&key=AIzaSyClTfJJQQFgWKuwGjxzgwQXzQaouqixPS4&callback=initMap" async defer></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?laguage=ja&region=JP&key=AIzaSyClTfJJQQFgWKuwGjxzgwQXzQaouqixPS4&callback=initMap" ></script>
 

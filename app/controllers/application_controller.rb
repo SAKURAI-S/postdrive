@@ -16,16 +16,16 @@ before_action :authenticate_user!,only: [:show, :edit, :new, :index]
    private
 
    def after_sign_up_path_for(resource_or_scope)
-    top_path
+    root_path
   end
 
   # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource_or_scope)
-    top_path
+    root_path
   end
 
   # ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource_or_scope)
-    top_path
+    root_path
   end
 end

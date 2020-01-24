@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'lists/new'
-	  get 'top' => 'homes#top'
+	  root :to => "homes#top"
 
 	  get 'top' => 'lists#show'
+	  post 'lists' => 'lists#create'
+	  get 'lists/new'
 
-	  
+	   
 
 
   devise_for :users, :controllers => {
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
 	get 'homes/about' => 'homes#about', as: "about"
 
 	devise_scope :user do
-	  get "user/:id", :to => "users/registrations#detail"
+	  # get "user/:id", :to => "users/registrations#detail"
 	  get "signup", :to => "users/registrations#new"
 	  get "login", :to => "users/sessions#new"
 	  get "logout", :to => "users/sessions#destroy"

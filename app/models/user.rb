@@ -28,3 +28,6 @@ class User < ApplicationRecord
   end
 
 end
+def lists
+  return List.where(user_id: self.id)
+end
