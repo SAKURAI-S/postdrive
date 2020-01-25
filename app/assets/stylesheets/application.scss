@@ -18,12 +18,13 @@
 @import "bootstrap";
 
 
- .jumbotron { background:url(share07.png) center no-repeat; background-size: cover;}
+ .jumbotron { background:url(share.png) center no-repeat; background-size: cover;}
 
 header{
  color: white;
 }
  .main {
+ height: 1px;
   margin-top: 51px;
  }
 
@@ -70,4 +71,3 @@ header{
     color: blue;
     }
 }
-

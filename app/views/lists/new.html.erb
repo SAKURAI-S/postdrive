@@ -28,7 +28,8 @@
 
        <h4>画像</h4>
       <%= f.attachment_field :image %>
-
+      <%= f.hidden_field :lat %>
+      <%= f.hidden_field :lng %>
       <h4>内容</h4>
       <%= f.text_area :body, class: "body_field"  %>
 
@@ -83,6 +84,11 @@
                               map: map,
                               title:"You are here."
                });
+
+               // フォームに取得した値を挿入
+               $('#list_lat').val(YourPosition.lat())
+               $('#list_lng').val(YourPosition.lng())
+
                map.setCenter(YourPosition);
                var win_options = {
                     content: '<b>現在位置</b><br />緯度：' + YourPosition.lat() + '<br />経度：' + YourPosition.lng() + '<br />高度：' + String(alt)

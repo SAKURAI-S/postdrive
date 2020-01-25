@@ -44,7 +44,7 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:title, :body,:image)
+    params.require(:list).permit(:title, :body,:image, :lat, :lng)
   end
   def user_params
     params.require(:user).permit(:username, :profile_image_id, :introduction)
