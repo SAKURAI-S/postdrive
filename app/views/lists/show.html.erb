@@ -1,107 +1,14 @@
 <!-- 投稿詳細 -->
-<h2>Books detail</h2>
+  <!DOCTYPE html>
+<html lang="ja">
+<h2>投稿詳細画面</h2>
 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback:"no_image.jpg" %><br>
 <%= link_to(@user.username,"users/#{@user.id}") %>
  <h2>タイトル</h2>
   <p><%= @list.title %></p>
   <h2>本文</h2>
   <p><%= @list.body %></p>
-<html>
-     <head>
-     <meta charset="utf-8"/>
-     <script type="text/javascript">
-          var map;
-          var marker;
-          function initMap() {
-               map = new google.maps.Map(document.getElementById('map_canvas'), {
-                 center: {lat: 35.684482, lng: 139.708776},
-                 zoom: 14
-               });
-          }
-          function getCurrentPosition() {
-               if (navigator.geolocation) {
-                    var bHighAccuracy = document.getElementById('chxHighAccuracy').checked;
-                    var PositionOptions = {
-                         enableHighAccuracy: bHighAccuracy,/* 高精度の結果取得是非 */
-                         timeout: 5000,                    /* 位置情報の取得にかかる時間の上限 (ミリ秒)   */
-                         maximumAge:Infinity              /* キャッシュ済みの位置情報の有効期限 (ミリ秒)、Infinity：無限 */
-                    };
-                   /* 現在位置取得 */
-                    navigator.geolocation.getCurrentPosition(success_func, error_func,PositionOptions);
-               } else {
-                    alert('Geolocation を利用できません');
-               }
-          }
-          function success_func(position) {
-               /* positionは位置情報を保持しています */
-               var lat = position.coords.latitude;
-               var lng = position.coords.longitude;
-               var alt = position.coords.altitude;
-               var accuracy = position.coords.accuracy;
-               var accuracyAlt = position.coords.altitudeAccuracy ;
-               var heading = position.coords.heading ;             // 0=北、90=東、180=南、270=西
-               var speed = position.coords.speed ;
-               var now = new Date(position.timestamp);  // 取得時間
-               var YourPosition =  new google.maps.LatLng(lat,lng);
-               // 現在位置にマーカーを立てる
-               marker = new google.maps.Marker({
-                              position: YourPosition,
-                              map: map,
-                              title:"You are here."
-               });
-               map.setCenter(YourPosition);
-               var win_options = {
-                    content: '<b>現在位置</b><br />緯度：' + YourPosition.lat() + '<br />経度：' + YourPosition.lng() + '<br />高度：' + String(alt)
-                                          + '<br />緯度、経度の精度：' + accuracy 
-                                          + '<br />高度の精度：' + accuracyAlt
-                                          + '<br />方角：' + heading
-                                          + '<br />速度：' + speed
-                                          + '<br />取得時間：' + now
-               } ;
-               var infoWindow = new google.maps.InfoWindow( win_options ) ;
-               infoWindow.open( map ,marker ) ;
-               // 現在位置の範囲
-               var Circle = new google.maps.Circle({
-                  strokeColor: '#FF0000',
-                  strokeOpacity: 0.8,
-                  strokeWeight: 2,
-                  fillColor: '#FF0000',
-                  fillOpacity: 0.35,
-                  map: map,
-                  center: YourPosition,
-                  radius: accuracy
-                });
-          }
-          function error_func(errorinfo) {
-               /* errorinfoはエラー情報を保持しています */
-               var errorcode = errorinfo.code;
-               var errmessage = errorinfo.message;
-               switch(errorcode) {
-                    case errorinfo.PERMISSION_DENIED: // 1:PERMISSION_DENIED:
-                         alert('このページにはアクセス許可がないため、位置情報の取得に失敗しました。\nエラーメッセージ：' + errmessage);
-                         break;
-                    case errorinfo.POSITION_UNAVAILABLE: // 2:POSITION_UNAVAILABLE:
-                         alert('少なくともひとつの位置情報ソースが内部的なエラーを返したため、位置情報の取得に失敗しました。\nエラーメッセージ：' + errmessage);
-                         break;
-                    case errorinfo.TIMEOUT: // 3:TIMEOUT:
-                         alert('指定された制限時間内に位置情報を取得することができませんでした。\nエラーメッセージ：' + errmessage);
-                         break;
-               }
-          }
-     </script>
-</head>
-<body>
-     <div style="height:400px;100%"id="map_canvas"></div>
-     <script src="https://maps.googleapis.com/maps/api/js?key=(APIキー)&callback=initMap" async="" defer=""></script>
-     <br /><button class'btn btn-primary' type='button' onclick='getCurrentPosition();'>現在位置取得</button>
-     <input type="checkbox" id="chxHighAccuracy" /><label for='chxHighAccuracy'> 高精度に位置を取得する </label>
-</body>
-</html>
-
-
-
-
-
-
-    <script src="https://maps.googleapis.com/maps/api/js?laguage=ja&region=JP&key=AIzaSyClTfJJQQFgWKuwGjxzgwQXzQaouqixPS4&callback=initMap" async defer></script>
-
+   <% if @user == current_user %>
+  <%= link_to "編集", edit_list_path(@list.id) %>
+<%= link_to "削除", destroy_list_path(@list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>

@@ -1,4 +1,7 @@
 <!-- 編集画面 -->
+ <!DOCTYPE html>
+<html lang="ja">
+
 <h1>編集画面</h1>
 <%= form_for(@list, url:"/lists/#{@list.id}") do |f| %>
     <h4>タイトル</h4>
@@ -7,75 +10,3 @@
     <%= f.text_area :body %>
     <%= f.submit '保存' %>
 <% end %>
-
-
-    <meta charset="utf-8">
-    <title>Simple Map Sample</title>
-    <meta charset="utf-8">
-    <style>
-    /* マップを表示する div 要素の高さを必ず明示的に指定します。 */
-    #map {
-        height: 400px;
-        width: 1000px;
-    }
-    </style>
-    <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
-    <div id="infowindw">sample1</div>
-     <script>
-    // 現在地取得処理
-    function initMap() {
-      // Geolocation APIに対応している
-      if (navigator.geolocation) {
-        // 現在地を取得
-        navigator.geolocation.getCurrentPosition(
-          // 取得成功した場合
-          function(position) {
-            // 緯度・経度を変数に格納
-            var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            // マップオプションを変数に格納
-            var mapOptions = {
-              zoom : 15,          // 拡大倍率
-              center : mapLatLng  // 緯度・経度
-            };
-            // マップオブジェクト作成
-            var map = new google.maps.Map(
-              document.getElementById("map"), // マップを表示する要素
-              mapOptions         // マップオプション
-            );
-
-            //　マップにマーカーを表示する
-            var marker = new google.maps.Marker({
-              map : map,             // 対象の地図オブジェクト
-              position : mapLatLng   // 緯度・経度
-            });
-          },
-     // 取得失敗した場合
-          function(error) {
-            // エラーメッセージを表示
-            switch(error.code) {
-              case 1: // PERMISSION_DENIED
-                alert("位置情報の利用が許可されていません");
-                break;
-              case 2: // POSITION_UNAVAILABLE
-                alert("現在位置が取得できませんでした");
-                break;
-              case 3: // TIMEOUT
-                alert("タイムアウトになりました");
-                break;
-              default:
-                alert("その他のエラー(エラーコード:"+error.code+")");
-                break;
-            }
-          }
-        );
-      // Geolocation APIに対応していない
-      } else {
-        alert("この端末では位置情報が取得できません");
-      }
-    }
-     <br /><button class'btn btn-primary' type='button' onclick='getCurrentPosition();'>現在位置取得</button>
-     <input type="checkbox" id="chxHighAccuracy" /><label for='chxHighAccuracy'> 高精度に位置を取得する </label>
-  </script>
-
-
-    <script src="https://maps.googleapis.com/maps/api/js?laguage=ja&region=JP&key=AIzaSyClTfJJQQFgWKuwGjxzgwQXzQaouqixPS4&callback=initMap" async defer></script>

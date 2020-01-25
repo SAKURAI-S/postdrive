@@ -45,7 +45,10 @@
       var map;
       var marker;
       var infoWindow;
-
+      function mymap() {
+        document.getElementById('Iat_date').value = document.getElementById('Iat').value
+        document.getElementById('Ing_date').value = document.getElementById('Ing').value
+      }
       function initMap() {
 
         //マップ初期表示の位置設定
@@ -84,6 +87,7 @@
                   setInfoW(place, latlng, address);
                   // マーカーにクリックイベントを追加
                   markerEvent();
+                  alert(place.latLng.lat())
                 }
               }
             } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {

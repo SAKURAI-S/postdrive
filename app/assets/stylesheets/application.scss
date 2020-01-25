@@ -13,8 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+ .jumbotron { background:url(share07.png) center no-repeat; background-size: cover;}
 
 header{
  color: white;
@@ -40,6 +44,30 @@ header{
 .btn_field {
 	width: 260px;
 }
-footer {
-	
+
+/* すべての画面サイズで適用される設定 */
+.social i {
+  color:black;
 }
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .social i {
+    color: green;
+    }
+}
+
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .social i {
+    color: red;
+    }
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+.social i {
+    color: blue;
+    }
+}
+

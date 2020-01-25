@@ -1,27 +1,56 @@
 <!-- 新規投稿 -->
-<html>
-<h2>New book</h2>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Placeサーチ</title>
+    <style>
+      #header {
+          background-color: darkblue;
+          padding: 3px;
+          width: 1195px;
+          font-family: Meriyo UI;
+          font-size: 14px;
+          color: white;
+      }
+      #target {
+        width: 1200px;
+        height: 700px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyClTfJJQQFgWKuwGjxzgwQXzQaouqixPS4&callback=initMap" async defer></script>
+  </head>
+  <body>
+    <h2>新しい投稿</h2>
     <%= form_for (@list) do |f| %>
-        <h4>Title</h4>
-        <%= f.text_field :title, class: "title_field" %>
+      <h4>タイトル</h4>
+      <%= f.text_field :title, class: "title_field" %>
 
-        <h4>Opinion</h4>
-        <%= f.text_area :body, class: "body_field"  %>
+       <h4>画像</h4>
+      <%= f.attachment_field :image %>
 
-        <%= f.submit 'Create List',class: "btn btn-primary col-xs-12" %>
+      <h4>内容</h4>
+      <%= f.text_area :body, class: "body_field"  %>
+
+      <%= f.submit '投稿',class: "btn btn-primary col-xs-12" %>
     <% end %>
-</html>
 
-     <head>
-     <meta charset="utf-8"/>
-     <script type="text/javascript">
+    <div style="height:400px;  width:100%;" id="map_canvas"></div>
+
+    <br /><button class'btn btn-primary' type='button' onclick='getCurrentPosition();'>現在位置取得</button>
+    <input type="checkbox" id="chxHighAccuracy" /><label for='chxHighAccuracy'> 高精度に位置を取得する </label>
+    <script>
           var map;
           var marker;
           function initMap() {
-               map = new google.maps.Map(document.getElementById('map_canvas'), {
-                 center: {lat: 35.684482, lng: 139.708776},
-                 zoom: 14
-               });
+              var target = document.getElementById('map_canvas');
+              var centerp = {lat: 37.67229496806523, lng: 137.88838989062504};
+
+               //マップ表示
+              map = new google.maps.Map(target, {
+                center: centerp,
+                zoom: 2,
+              });
           }
           function getCurrentPosition() {
                if (navigator.geolocation) {
@@ -93,16 +122,6 @@
                          break;
                }
           }
-     </script>
-</head>
-<body>
-     <div style="height:400px;100%"id="map_canvas"></div>
-   
-     <br /><button class'btn btn-primary' type='button' onclick='getCurrentPosition();'>現在位置取得</button>
-     <input type="checkbox" id="chxHighAccuracy" /><label for='chxHighAccuracy'> 高精度に位置を取得する </label>
-</body>
-
-
-
-    <script src="https://maps.googleapis.com/maps/api/js?laguage=ja&region=JP&key=AIzaSyClTfJJQQFgWKuwGjxzgwQXzQaouqixPS4&callback=initMap" ></script>
-
+    </script>
+  </body>
+</html>
