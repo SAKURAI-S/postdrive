@@ -1,20 +1,12 @@
 <!-- ユーザー情報詳細 -->
 <!DOCTYPE html>
-<html lang="ja">
-  <head>
-  	<meta charset="utf-8">
-    <p>ユーザー情報</p>
-    <style>
-    </style>
+<div class="col-xs-9">
+<div class="table-responsive">
 <body>
+    <h2>ユーザー情報</h2>
 <% @user.posts.each do |list| %>
     #画像、ユーザネーム、投稿をそれぞれ表示
-  <% end %>
-end
-<div class="center-block">
-<div class="col-lg-5">
-	<table class="table table">
-			<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback:"no_image.jpg" %>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback:"no_image.jpg" %>
 		<tr>
 			<th>name</th>
 			<td><%= @user.name %></td>
@@ -25,7 +17,7 @@ end
 		</tr>
 	</table>
 </div>
-</div>
+<% end %>
 
-	<%=link_to '', edit_user_path(@user.id),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+	<%=link_to '', edit_user_path(@user.id),class: "col-xs-5 btn btn-default glyphicon glyphicon-wrench" %>
 </body>

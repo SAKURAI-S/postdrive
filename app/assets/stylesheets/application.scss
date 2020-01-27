@@ -16,23 +16,23 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-
- .jumbotron { background:url(share.png) center no-repeat; background-size: cover;}
-
-header{
- color: white;
+.bg_test {
+    background-image: url(share.png);    /* 背景画像指定 */
 }
+
  .main {
- height: 1px;
-  margin-top: 51px;
+  width: 100%;
+  max-width: 100%; /* 画像幅以上拡大しないようにする指定 */
+  height: 100%;
  }
 
 .title_field {
-	width: 260px;
+	width: 100%;
+  height: 100%;
 }
 .body_field{
 	width: 300px;
+  height: 100%;
 }
 .login_buttun {
 	color: #666;

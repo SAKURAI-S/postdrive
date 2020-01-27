@@ -1,18 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <div class="col-xs-9">
+    <div class="table-responsive">
+      <table class="table">
+        <h2>投稿詳細画面</h2>
+        <thead>
+          <tr class="success">
+          <th>投稿者名</th>
+          <th>タイトル</th>
+          <th>投稿内容</th>
+          <th>投稿画像</th>
+          <th><% if @user == current_user %>
+              <%= link_to "編集", edit_list_path(@list.id) %>
+              <%= link_to "削除", destroy_list_path(@list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+              <% end %>
+          </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="success">
+            <th><%= link_to(@user.username,"users/#{@user.id}") %></th>
+            <th><%= @list.title %></th>
+            <th><%= @list.body %></th>
+            <th><%= attachment_image_tag @list, :image, :fill, 100, 100, format: 'jpeg' %></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</html>
 
 
-<body>
-	<h2>投稿詳細画面</h2>
-	<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback:"no_image.jpg" %><br>
-	<%= link_to(@user.username,"users/#{@user.id}") %>
-	 <h2>タイトル</h2>
-	  <p><%= @list.title %></p>
-	  <h2>本文</h2>
-	  <p><%= @list.body %></p>
-	   <% if @user == current_user %>
-	  <%= link_to "編集", edit_list_path(@list.id) %>
-	<%= link_to "削除", destroy_list_path(@list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-	<% end %>
-
+<!-- マップ -->
 <div style="height:400px;  width:100%;" id="map_canvas"></div>
 
 	<script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyClTfJJQQFgWKuwGjxzgwQXzQaouqixPS4&callback=initMap" async defer></script>
