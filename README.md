@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#POSTDRIVE
+車で出かけた際の写真投稿サイト
 
-Things you may want to cover:
+## Dependency
+フレームワーク
+Ruby on rails (5.2.4)
+HTML&CSS
+Javascript
+Googlemap API
 
-* Ruby version
+## Gem
+refile refile/rails manfe/refile
+refile-mini_magick
+devise
+paranoia
+bootstrap-sass,~> 3.3.6'
+jquery-rails
+dotenv
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Auther
+櫻井翔一郎

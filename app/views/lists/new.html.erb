@@ -18,7 +18,7 @@
         height: 700px;
       }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyClTfJJQQFgWKuwGjxzgwQXzQaouqixPS4&callback=initMap" async defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV["GOOGLE_MAP_API_KEY"]%>&callback=initMap"></script>
   </head>
   <body>
     <h2>新しい投稿</h2>

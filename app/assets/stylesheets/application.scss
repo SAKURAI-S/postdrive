@@ -17,7 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 .bg_test {
-    background-image: url(share.png);    /* 背景画像指定 */
+    background-image: image-url("share.png");    /* 背景画像指定 */
 }
 
  .main {
