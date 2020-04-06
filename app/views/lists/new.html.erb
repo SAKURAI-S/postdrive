@@ -18,7 +18,7 @@
         height: 700px;
       }
     </style>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV["GOOGLE_MAP_API_KEY"]%>&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap"></script>
   </head>
   <body>
     <h2>新しい投稿</h2>
@@ -50,7 +50,7 @@
                //マップ表示
               map = new google.maps.Map(target, {
                 center: centerp,
-                zoom: 2,
+                zoom: 10,
               });
           }
           function getCurrentPosition() {
@@ -74,8 +74,6 @@
                var alt = position.coords.altitude;
                var accuracy = position.coords.accuracy;
                var accuracyAlt = position.coords.altitudeAccuracy ;
-               var heading = position.coords.heading ;             // 0=北、90=東、180=南、270=西
-               var speed = position.coords.speed ;
                var now = new Date(position.timestamp);  // 取得時間
                var YourPosition =  new google.maps.LatLng(lat,lng);
                // 現在位置にマーカーを立てる
@@ -91,12 +89,8 @@
 
                map.setCenter(YourPosition);
                var win_options = {
-                    content: '<b>現在位置</b><br />緯度：' + YourPosition.lat() + '<br />経度：' + YourPosition.lng() + '<br />高度：' + String(alt)
-                                          + '<br />緯度、経度の精度：' + accuracy
-                                          + '<br />高度の精度：' + accuracyAlt
-                                          + '<br />方角：' + heading
-                                          + '<br />速度：' + speed
-                                          + '<br />取得時間：' + now
+                    content: '<b>現在位置</b><br />緯度：' + YourPosition.lat() + '<br />経度：' + YourPosition.lng()
+       + '<br />取得時間：' + now
                } ;
                var infoWindow = new google.maps.InfoWindow( win_options ) ;
                infoWindow.open( map ,marker ) ;
